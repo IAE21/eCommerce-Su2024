@@ -10,4 +10,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="IMM.Library">
+      <HintPath>..\..\IMM.Library\bin\Debug\net8.0\IMM.Library.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

@@ -5,7 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IMM.Models;
-
+using IMM.Utilities;
+using Newtonsoft.Json;
 namespace IMM.Services
 {
     public class InventoryServiceProxy
@@ -16,25 +17,27 @@ namespace IMM.Services
 
         private InventoryServiceProxy() 
         {
-            items = new List<Item>()
-            {
-                new Item 
-                {
-                    Id = 1, 
-                    Name = "Lightbulbs", 
-                    Description = "These are really good lightbulbs.",
-                    Price = 30,
-                    Stock = 50
-                },
-                new Item 
-                {
-                    Id = 2, 
-                    Name = "Toothbrushes", 
-                    Description = "These are really good toothbrushes.",
-                    Price = 10,
-                    Stock = 55
-                }
-            };
+            //items = new List<Item>()
+            //{
+            //    new Item 
+            //    {
+            //        Id = 1, 
+            //        Name = "Lightbulbs", 
+            //        Description = "These are really good lightbulbs.",
+            //        Price = 30,
+            //        Stock = 50
+            //    },
+            //    new Item 
+            //    {
+            //        Id = 2, 
+            //        Name = "Toothbrushes", 
+            //        Description = "These are really good toothbrushes.",
+            //        Price = 10,
+            //        Stock = 55
+            //    }
+            //};
+            var response = new WebRequestHandler().Get("/Inventory").Result;
+            items = JsonConvert.DeserializeObject<List<Item>>(response);
             taxRate = 0.07;
         }
 

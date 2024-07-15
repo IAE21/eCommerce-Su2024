@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IMM.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,11 +36,11 @@ namespace IMM.Models
             }
         }
 
-        public List<Item> Contents { get; set; }
+        public List<ItemDTO> Contents { get; set; }
 
         public Cart() 
         {
-            Contents = new List<Item>();
+            Contents = new List<ItemDTO>();
         }
 
 

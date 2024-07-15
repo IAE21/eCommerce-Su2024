@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IMM.Models;
+using IMM.DTO;
 
 namespace IMM.Services
 {
@@ -80,7 +81,7 @@ namespace IMM.Services
         }
 
         //Add & Update in the Cart
-        public void AddToCart(int? cartId, Item item)
+        public void AddToCart(int? cartId, ItemDTO item)
         {
             if (carts.Count == 0)
             {

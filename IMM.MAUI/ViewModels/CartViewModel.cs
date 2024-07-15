@@ -1,5 +1,6 @@
 ﻿using IMM.Models;
 using IMM.Services;
+using IMM.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,7 +20,7 @@ namespace IMM.MAUI.ViewModels
             get { return Cart?.Contents?.Select(i => new ItemViewModel(Cart.Id, i))?.ToList() ?? new List<ItemViewModel>(); }
         }
 
-        private decimal ItemTotal(Item? i)
+        private decimal ItemTotal(ItemDTO? i)
         {
             if (i == null)
             {

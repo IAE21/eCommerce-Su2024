@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using IMM.DTO;
 using IMM.Models;
 using IMM.Services;
 
@@ -11,7 +12,7 @@ namespace IMM.MAUI.ViewModels
 {
     public class ItemViewModel
     {
-        public Item? Item { get; set; }
+        public ItemDTO? Item { get; set; }
 
         public int? RespectiveCartId { get; set; }
 
@@ -53,16 +54,23 @@ namespace IMM.MAUI.ViewModels
 
         public ItemViewModel()
         {
-            Item = new Item();
+            Item = new ItemDTO();
             SetupCommands();
         }
 
-        public ItemViewModel(Item i)
+        public ItemViewModel(ItemDTO? i)
         {
-            Item = i;
+            if (i != null)
+            {
+                Item = i;
+            }
+            else
+            {
+                Item = new ItemDTO();
+            }
             SetupCommands();
         }
-        public ItemViewModel(int cartId, Item i)
+        public ItemViewModel(int cartId, ItemDTO i)
         {
             Item = i;
             RespectiveCartId = cartId;
@@ -74,7 +82,7 @@ namespace IMM.MAUI.ViewModels
             Item = InventoryServiceProxy.Current?.Items?.FirstOrDefault(i => i.Id == id);
             if (Item == null)
             {
-                Item = new Item();
+                Item = new ItemDTO();
             }
             SetupCommands();
         }
@@ -115,7 +123,7 @@ namespace IMM.MAUI.ViewModels
             {
                 return;
             }
-            var cartItem = new Item(i.Item);
+            var cartItem = new ItemDTO(i.Item);
             cartItem.Stock = 1;
             CartServiceProxy.Current.AddToCart(cartId, cartItem);
         }

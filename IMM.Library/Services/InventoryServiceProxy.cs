@@ -6,19 +6,20 @@ using System.Text;
 using System.Threading.Tasks;
 using IMM.Models;
 using IMM.Utilities;
+using IMM.DTO;
 using Newtonsoft.Json;
 namespace IMM.Services
 {
     public class InventoryServiceProxy
     {
-        private List<Item> items;
+        private List<ItemDTO> items;
 
         private double taxRate;
 
         private InventoryServiceProxy() 
         {
             var response = new WebRequestHandler().Get("/Inventory").Result;
-            items = JsonConvert.DeserializeObject<List<Item>>(response);
+            items = JsonConvert.DeserializeObject<List<ItemDTO>>(response);
             taxRate = 0.07;
         }
 
@@ -44,7 +45,7 @@ namespace IMM.Services
         //CRUD Functionality---------------------------
 
         //Read
-        public ReadOnlyCollection<Item> Items
+        public ReadOnlyCollection<ItemDTO> Items
         {
             get { return items.AsReadOnly(); }
         }
@@ -69,7 +70,7 @@ namespace IMM.Services
         }
 
         //Add & Update
-        public Item? AddOrUpdate(Item? item)
+        public ItemDTO? AddOrUpdate(ItemDTO? item)
         {
             if (items == null || item == null)
             {

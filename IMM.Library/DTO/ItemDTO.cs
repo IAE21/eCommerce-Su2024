@@ -65,6 +65,18 @@ namespace IMM.DTO
 
         public ItemDTO(Item i)
         {
+            Id = i.Id;
+            Name = i.Name;
+            Description = i.Description;
+            Price = i.Price;
+            Stock = i.Stock;
+            Markdown = i.Markdown;
+            BOGO = i.BOGO;
+        }
+
+        public ItemDTO(ItemDTO i)
+        {
+            Id = i.Id;
             Name = i.Name;
             Description = i.Description;
             Price = i.Price;

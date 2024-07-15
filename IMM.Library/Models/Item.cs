@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using IMM.DTO;
+using System.Windows.Input;
 
 namespace IMM.Models
 {
@@ -68,6 +69,17 @@ namespace IMM.Models
             Description = i.Description;
             Price = i.Price;
             Id = i.Id;
+            Stock = i.Stock;
+            Markdown = i.Markdown;
+            BOGO = i.BOGO;
+        }
+
+        public Item(ItemDTO i)
+        {
+            Id = i.Id;
+            Name = i.Name;
+            Description = i.Description;
+            Price = i.Price;
             Stock = i.Stock;
             Markdown = i.Markdown;
             BOGO = i.BOGO;

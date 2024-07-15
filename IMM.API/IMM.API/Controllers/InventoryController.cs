@@ -21,5 +21,11 @@ namespace IMM.API.Controllers
         {
             return await new InventoryEC().Get();
         }
+
+        [HttpPost()]
+        public async Task<ItemDTO> AddOrUpdate([FromBody] ItemDTO i)
+        {
+            return await new InventoryEC().AddOrUpdate(i);
+        }
     }
 }

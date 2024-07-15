@@ -55,41 +55,11 @@ namespace IMM.Services
             get { return taxRate; }
         }
 
-        //Automatically increments ID
-        private int NextId
-        {
-            get
-            {
-                if (!items.Any())
-                {
-                    return 1;
-                }
-
-                return items.Select(i => i.Id).Max() + 1;
-            }
-        }
-
         //Add & Update
-        public ItemDTO? AddOrUpdate(ItemDTO? item)
+        public async Task<ItemDTO> AddOrUpdate(ItemDTO item)
         {
-            if (items == null || item == null)
-            {
-                return null;
-            }
-
-            bool add = false;
-            if (item.Id == 0)
-            {
-                item.Id = NextId;
-                add = true;
-            }
-
-            if (add)
-            {
-                items.Add(item);
-            }
-
-            return item;
+            var result = await new WebRequestHandler().Post("/Inventory", item);
+            return JsonConvert.DeserializeObject<ItemDTO>(result);
         }
 
         public void UpdateTaxRate(double? t)

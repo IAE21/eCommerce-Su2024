@@ -137,13 +137,13 @@ namespace IMM.MAUI.ViewModels
             CartServiceProxy.Current.DeleteItem(cartId, i.Item.Id);
         }
 
-        public void AddOrUpdate()
+        public async void AddOrUpdate()
         {
             if (Item == null)
             {
                 return;
             }
-            InventoryServiceProxy.Current.AddOrUpdate(Item);
+            Item = await InventoryServiceProxy.Current.AddOrUpdate(Item);
         }
     }
 }

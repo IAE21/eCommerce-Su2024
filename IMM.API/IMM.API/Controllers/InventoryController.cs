@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using IMM.Models;
 using IMM.API.EC;
+using IMM.DTO;
 
 namespace IMM.API.Controllers
 {
@@ -16,7 +17,7 @@ namespace IMM.API.Controllers
         }
 
         [HttpGet()]
-        public async Task<IEnumerable<Item>> Get()
+        public async Task<IEnumerable<ItemDTO>> Get()
         {
             return await new InventoryEC().Get();
         }

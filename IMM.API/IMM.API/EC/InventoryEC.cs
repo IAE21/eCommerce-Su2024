@@ -1,5 +1,6 @@
 ﻿using IMM.API.Database;
 using IMM.Models;
+using IMM.DTO;
 
 namespace IMM.API.EC
 {
@@ -11,9 +12,9 @@ namespace IMM.API.EC
 
         }
 
-        public async Task<IEnumerable<Item>> Get()
+        public async Task<IEnumerable<ItemDTO>> Get()
         {
-            return FakeDatabase.Items.Take(100);
+            return FakeDatabase.Items.Take(100).Select(i => new ItemDTO(i));
         }
     }
 }

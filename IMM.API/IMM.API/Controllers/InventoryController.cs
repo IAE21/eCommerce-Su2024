@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using IMM.Models;
+using IMM.API.EC;
 
 namespace IMM.API.Controllers
 {
@@ -17,25 +18,7 @@ namespace IMM.API.Controllers
         [HttpGet()]
         public async Task<IEnumerable<Item>> Get()
         {
-            return new List<Item>()
-            {
-                new Item
-                {
-                    Id = 1,
-                    Name = "Lightbulbs",
-                    Description = "These are really good lightbulbs.",
-                    Price = 30,
-                    Stock = 50
-                },
-                new Item
-                {
-                    Id = 2,
-                    Name = "Toothbrushes",
-                    Description = "These are really good toothbrushes.",
-                    Price = 10,
-                    Stock = 55
-                }
-            };
+            return await new InventoryEC().Get();
         }
     }
 }

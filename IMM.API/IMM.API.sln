@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMM.API", "IMM.API\IMM.API.csproj", "{E8077E24-6E33-4993-8B84-D3BA695B191B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E8077E24-6E33-4993-8B84-D3BA695B191B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8077E24-6E33-4993-8B84-D3BA695B191B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8077E24-6E33-4993-8B84-D3BA695B191B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8077E24-6E33-4993-8B84-D3BA695B191B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9BE3CF6B-966C-469A-BB13-69DF53CDDA3C}
+	EndGlobalSection
+EndGlobal

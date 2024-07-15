@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IMM.MAUI.Views.CheckoutView"
+             Title="CheckoutView"
+             NavigatedTo="ContentPage_NavigatedTo"
+             NavigatedFrom="ContentPage_NavigatedFrom">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="0.75*"/>
+            <RowDefinition Height="0.75*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="4.5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.ColumnSpan="3" Text="Thanks for your purchase!" FontSize="Header" VerticalOptions="End" HorizontalOptions="Center"/>
+        <Label Grid.Row="1" Grid.ColumnSpan="3" Text="Your order is being processed. Here is a summary of your order:" FontSize="Subtitle" VerticalOptions="Start"  HorizontalOptions="Center"/>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <ListView Grid.Row="0" ItemsSource="{Binding Cart.Contents}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.15*"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="0.25*"/>
+                                    <ColumnDefinition Width="1.25*"/>
+                                    <ColumnDefinition Width="0.25*"/>
+                                    <ColumnDefinition Width="0.25*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Grid.RowSpan="2" Text="{Binding Item.Stock}" FontSize="Small" VerticalOptions="Center"/>
+                                <Label Grid.Column="1" Text="{Binding Item.Name}" FontSize="Small" VerticalOptions="Center"/>
+                                <Label Grid.Column="2" Text="{Binding DisplayBOGO}" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Start"/>
+                                <Label Grid.Column="3" Grid.RowSpan="2" Text="{Binding Item.Description}" FontSize="Small" VerticalOptions="Center"/>
+                                <Label Grid.Column="4" Text="{Binding DisplayPrice}" FontSize="Small" VerticalOptions="Center"/>
+                                <Label Grid.Column="5" Text="{Binding DisplayMarkdown}" FontSize="Small" VerticalOptions="Center"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Grid.Row="1" Grid.Column="1" Text="Subtotal:" FontSize="Medium" HorizontalOptions="Start"/>
+            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Subtotal}" FontSize="Medium" HorizontalOptions="Center"/>
+            <Label Grid.Row="2" Grid.Column="1" Text="{Binding DisplayTaxRate}" FontSize="Medium" HorizontalOptions="Start"/>
+            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Tax}" FontSize="Medium" HorizontalOptions="Center"/>
+            <Label Grid.Row="3" Grid.Column="1" Text="Total:" FontSize="Medium" HorizontalOptions="Start"/>
+            <Label Grid.Row="3" Grid.Column="1" Text="{Binding Total}" FontSize="Medium" HorizontalOptions="Center"/>
+        </Grid>
+        <Button Grid.Row="3" Grid.Column="1" Text="Keep Shopping" FontSize="Medium" Margin="2.5"
+                Clicked="KeepShopping_Clicked"/>
+        <Button Grid.Row="4" Grid.Column="1" Text="Return to Main Menu" FontSize="Medium" Margin="2.5"
+                Clicked="MainMenu_Clicked"/>
+    </Grid>
+</ContentPage>

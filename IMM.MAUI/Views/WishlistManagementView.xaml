@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IMM.MAUI.Views.WishlistManagementView"
+             Title="WishlistManagementView"
+             NavigatedTo="ContentPage_NavigatedTo">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.25*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="4.5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.ColumnSpan="3" Text="Wishlists" FontSize="Header" HorizontalOptions="Center" />
+        <ListView Grid.Row="1" Grid.Column="1"
+                  ItemsSource="{Binding Carts}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.25*"/>
+                                <ColumnDefinition Width="1.25*"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="{Binding DisplayId}" FontSize="Small" VerticalOptions="Center"/>
+                            <Label Grid.Column="1" Text="{Binding Cart.Name}" FontSize="Small" VerticalOptions="Center"/>
+                            <Label Grid.Column="2" Text="{Binding DisplayCount}" FontSize="Small" VerticalOptions="Center"/>
+                            <Label Grid.Column="3" Text="{Binding Subtotal}" FontSize="Small" VerticalOptions="Center"/>
+                            <Button Grid.Column="4" Text="Shop" FontSize="Small" VerticalOptions="Center" Margin="2.5"
+                                    Command="{Binding Path=ShopCommand}"
+                                    CommandParameter="{Binding}"
+                                    />
+                            <Button Grid.Column="5" Text="Edit" FontSize="Small" VerticalOptions="Center" Margin="2.5"
+                                    Command="{Binding Path=EditCommand}"
+                                    CommandParameter="{Binding}"
+                                    />
+                            <Button Grid.Column="6" Text="Delete" FontSize="Small" VerticalOptions="Center" Margin="2.5"
+                                    Clicked="Delete_Clicked"
+                                    Command="{Binding Path=DeleteCommand}"
+                                    CommandParameter="{Binding}"
+                                    />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Text="Create New Wishlist" FontSize="Medium" Margin="2.5"
+                    Clicked="NewWishlist_Clicked"
+                    />
+            <Button Grid.Row="1" Text="Return to Shop" FontSize="Medium" Margin="2.5"
+                Clicked="ReturnShop_Clicked"
+                />
+            <Button Grid.Row="2" Text="Return to Main Menu" FontSize="Medium" Margin="2.5"
+                Clicked="MainMenu_Clicked"
+                />
+        </Grid>
+    </Grid>
+</ContentPage>

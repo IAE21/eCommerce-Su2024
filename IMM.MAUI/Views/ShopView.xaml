@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IMM.MAUI.Views.ShopView"
+             Title="ShopView"
+             NavigatedTo="ContentPage_NavigatedTo">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.75*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="4.5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.ColumnSpan="3"
+               Text="Shop"
+               HorizontalTextAlignment="Center"
+               FontSize="Large" />
+        <Grid Grid.Row="1" Grid.ColumnSpan="3" Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.25*"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="1.25*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Text="Available Items" FontSize="Medium" HorizontalOptions="Center"/>
+            <ListView Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Items}" Margin="5">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="0.75*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.25*"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="1.5*"/>
+                                    <ColumnDefinition Width="0.75*"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" VerticalOptions="Center" Text="{Binding Item.Id}"/>
+                                <Label Grid.Row="0" Grid.Column="1" VerticalOptions="End" Text="{Binding Item.Name}"/>
+                                <Label Grid.Row="1" Grid.Column="1" VerticalOptions="Start" Text="{Binding DisplayBOGO}"/>
+                                <Label Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" VerticalOptions="Center" Text="{Binding Item.Description}"/>
+                                <Label Grid.Row="0" Grid.Column="3" VerticalOptions="End" Text="{Binding DisplayPrice}"/>
+                                <Label Grid.Row="1" Grid.Column="3" VerticalOptions="Start" Text="{Binding DisplayMarkdown}"/>
+                                <Label Grid.Row="0" Grid.Column="4" Grid.RowSpan="2" VerticalOptions="Center" Text="{Binding Item.Stock}"/>
+                                <Button Grid.Row="0" Grid.Column="5" Grid.RowSpan="2" Text="Add to Cart" Margin="2.5" 
+                                        Command="{Binding Path=AddToCartCommand}"
+                                        CommandParameter="{Binding}"
+                                        Clicked="Add_Clicked"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Grid.Row="0" Grid.Column="1" Text="{Binding CartDisplayName}" FontSize="Medium" HorizontalOptions="Center"/>
+            <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Cart.Contents}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="0.75*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.25*"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="1.5*"/>
+                                    <ColumnDefinition Width="0.75*"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0"  Grid.Column="0" Grid.RowSpan="2" Text="{Binding Item.Id}" VerticalOptions="Center"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Item.Name}" VerticalOptions="End"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding DisplayBOGO}" VerticalOptions="Start"/>
+                                <Label Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Text="{Binding Item.Description}" VerticalOptions="Center"/>
+                                <Label Grid.Row="0" Grid.Column="3" Text="{Binding DisplayPrice}" VerticalOptions="End"/>
+                                <Label Grid.Row="1" Grid.Column="3" Text="{Binding DisplayMarkdown}" VerticalOptions="Start"/>
+                                <Label Grid.Row="0" Grid.Column="4" Grid.RowSpan="2" Text="{Binding Item.Stock}" VerticalOptions="Center"/>
+                                <Button Grid.Row="0" Grid.Column="5" Grid.RowSpan="2" Text="Remove" Margin="2.5" 
+                                        Command="{Binding Path=RemoveFromCartCommand}"
+                                        CommandParameter="{Binding}"
+                                        Clicked="Remove_Clicked"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Grid.Row="2" Grid.Column="1" Text="Subtotal:" FontSize="Medium" HorizontalOptions="Start"/>
+            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Subtotal}" FontSize="Medium" HorizontalOptions="Center"/>
+        </Grid>
+        <Button Grid.Row="3" Grid.Column="1"
+                Text="Checkout"
+                FontSize="Medium"
+                Margin="2.5"
+                Clicked="Checkout_Clicked"
+        />
+        <Button Grid.Row="4" Grid.Column="1"
+                Text="Wishlists"
+                FontSize="Medium"
+                Margin="2.5"
+                Clicked="Wishlist_Clicked"
+        />
+        <Button Grid.Row="5" Grid.Column="1"
+                Text="Return to Main Menu"
+                FontSize="Medium"
+                Margin="2.5"
+                Clicked="Home_Clicked"
+        />
+    </Grid>
+</ContentPage>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="IMM.MAUI.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:IMM.MAUI"
+    xmlns:views="clr-namespace:IMM.MAUI.Views"
+    Shell.FlyoutBehavior="Disabled"
+    Title="IMM.MAUI">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+    <ShellContent
+        Title="Inventory"
+        ContentTemplate="{DataTemplate views:InventoryManagementView}"
+        Route="Inventory" />
+
+    <ShellContent
+        Title="Shop"
+        ContentTemplate="{DataTemplate views:ShopView}"
+        Route="Shop" />
+
+    <ShellContent
+        Title="Item"
+        ContentTemplate="{DataTemplate views:ItemView}"
+        Route="Item" />
+
+    <ShellContent
+        Title="Tax"
+        ContentTemplate="{DataTemplate views:TaxRateView}"
+        Route="Tax" />
+
+    <ShellContent
+        Title="WishlistManage"
+        ContentTemplate="{DataTemplate views:WishlistManagementView}"
+        Route="WishlistManage" />
+
+    <ShellContent
+        Title="Wishlist"
+        ContentTemplate="{DataTemplate views:WishlistView}"
+        Route="Wishlist" />
+
+    <ShellContent
+        Title="Checkout"
+        ContentTemplate="{DataTemplate views:CheckoutView}"
+        Route="Checkout" />
+
+</Shell>

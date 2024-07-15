@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IMM.MAUI.Views.ItemView"
+             Title="ItemView"
+             NavigatedTo="ContentPage_NavigatedTo">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="4.5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.35*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" Text="Name" VerticalOptions="Center"/>
+            <Entry Grid.Row="0"  Grid.Column="1" Margin="5" Text="{Binding Item.Name}"/>
+
+            <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" Text="Description" VerticalOptions="Center"/>
+            <Entry Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding Item.Description}"/>
+
+            <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" Text="Price" VerticalOptions="Center"/>
+            <Entry Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding Item.Price}"/>
+
+            <Label Grid.Row="3" Grid.Column="0" FontSize="Medium" Text="Stock" VerticalOptions="Center"/>
+            <Entry Grid.Row="3" Grid.Column="1" Margin="5" Text="{Binding Item.Stock}"/>
+
+            <Label Grid.Row="4" Grid.Column="0" FontSize="Medium" Text="Markdown (%)" VerticalOptions="Center"/>
+            <Entry Grid.Row="4" Grid.Column="1" Margin="5" Text="{Binding Item.Markdown}"/>
+
+            <Label Grid.Row="5" Grid.Column="0" FontSize="Medium" Text="BOGO" VerticalOptions="Center"/>
+            <CheckBox Grid.Row="5" Grid.Column="1" Margin="5" IsChecked="{Binding Item.BOGO}"/>
+        </Grid>
+
+        <Button Grid.Row="2" Grid.Column="1" FontSize="Medium" Text="OK" Clicked="OK_Clicked" Margin="2.5"/>
+        <Button Grid.Row="3" Grid.Column="1" FontSize="Medium" Text="Cancel" Clicked="Cancel_Clicked" Margin="2.5"/>
+    </Grid>
+</ContentPage>

@@ -13,7 +13,7 @@ public partial class TaxRateView : ContentPage
 
     private void OK_Clicked(object sender, EventArgs e)
     {
-        (BindingContext as TaxRateViewModel).UpdateTaxRate();
+        (BindingContext as TaxRateViewModel)?.UpdateTaxRate();
         Shell.Current.GoToAsync("//Inventory");
     }
 

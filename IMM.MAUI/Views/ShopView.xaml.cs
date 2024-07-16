@@ -14,12 +14,12 @@ public partial class ShopView : ContentPage
 
     private void Add_Clicked(object sender, EventArgs e)
     {
-        (BindingContext as ShopViewModel).RefreshShop();
+        (BindingContext as ShopViewModel)?.RefreshShop();
     }
 
     private void Remove_Clicked(object sender, EventArgs e)
     {
-        (BindingContext as ShopViewModel).RefreshShop();
+        (BindingContext as ShopViewModel)?.RefreshShop();
     }
 
     private void Checkout_Clicked(object sender, EventArgs e)
@@ -40,6 +40,6 @@ public partial class ShopView : ContentPage
     private void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)
     {
         BindingContext = new ShopViewModel(CartId);
-        (BindingContext as ShopViewModel).RefreshShop();
+        (BindingContext as ShopViewModel)?.RefreshShop();
     }
 }

@@ -13,7 +13,7 @@ public partial class ItemView : ContentPage
 
     private void OK_Clicked(object sender, EventArgs e)
     {
-        (BindingContext as ItemViewModel).AddOrUpdate();
+        (BindingContext as ItemViewModel)?.AddOrUpdate();
         Shell.Current.GoToAsync("//Inventory");
     }
 

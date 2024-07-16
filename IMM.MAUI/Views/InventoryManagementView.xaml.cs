@@ -21,12 +21,12 @@ public partial class InventoryManagementView : ContentPage
 
     private void Delete_Clicked(object sender, EventArgs e)
     {
-        (BindingContext as InventoryViewModel).RefreshItems();
+        (BindingContext as InventoryViewModel)?.RefreshItems();
     }
 
     private void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)
     {
-        (BindingContext as InventoryViewModel).RefreshItems();
+        (BindingContext as InventoryViewModel)?.RefreshItems();
     }
 
     private void Tax_Clicked(object sender, EventArgs e)

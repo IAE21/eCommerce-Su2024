@@ -29,9 +29,10 @@ namespace IMM.MAUI.ViewModels
 
         }
 
-        public void RefreshItems()
+        public async void RefreshItems()
         {
-            NotifyPropertyChanged("Items");
+            await InventoryServiceProxy.Current.Get();
+            NotifyPropertyChanged(nameof(Items));
         }
     }
 }

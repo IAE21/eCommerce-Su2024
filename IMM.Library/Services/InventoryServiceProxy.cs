@@ -50,6 +50,14 @@ namespace IMM.Services
             get { return items.AsReadOnly(); }
         }
 
+        public async Task<IEnumerable<ItemDTO>> Get()
+        {
+            var result = await new WebRequestHandler().Get("/Inventory");
+            var refreshedList = JsonConvert.DeserializeObject<List<ItemDTO>>(result);
+            items = refreshedList?.ToList() ?? new List<ItemDTO>();
+            return items;
+        }
+
         public double TaxRate
         {
             get { return taxRate; }

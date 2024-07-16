@@ -12,7 +12,7 @@ public partial class WishlistManagementView : ContentPage
 
     private void Delete_Clicked(object sender, EventArgs e)
     {
-        (BindingContext as WishlistManagementViewModel).RefreshWishlists();
+        (BindingContext as WishlistManagementViewModel)?.RefreshWishlists();
     }
 
     private void NewWishlist_Clicked(object sender, EventArgs e)
@@ -32,6 +32,6 @@ public partial class WishlistManagementView : ContentPage
 
     private void ContentPage_NavigatedTo(object sender, NavigatedToEventArgs e)
     {
-        (BindingContext as WishlistManagementViewModel).RefreshWishlists();
+        (BindingContext as WishlistManagementViewModel)?.RefreshWishlists();
     }
 }

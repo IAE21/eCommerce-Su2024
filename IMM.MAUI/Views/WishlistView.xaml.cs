@@ -13,7 +13,7 @@ public partial class WishlistView : ContentPage
 
     private void OK_Clicked(object sender, EventArgs e)
     {
-        (BindingContext as CartViewModel).AddOrUpdate();
+        (BindingContext as CartViewModel)?.AddOrUpdate();
         Shell.Current.GoToAsync("//WishlistManage");
     }
 

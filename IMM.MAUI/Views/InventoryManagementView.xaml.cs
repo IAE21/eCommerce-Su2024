@@ -1,4 +1,5 @@
 using IMM.MAUI.ViewModels;
+using IMM.Services;
 namespace IMM.MAUI.Views;
 
 public partial class InventoryManagementView : ContentPage

@@ -44,5 +44,17 @@ namespace IMM.API.EC
 
             return i;
         }
+
+        public async Task<ItemDTO?> Delete(int id)
+        {
+            var deleteItem = FakeDatabase.Items.FirstOrDefault(c => c.Id == id);
+
+            if (deleteItem != null)
+            {
+                FakeDatabase.Items.Remove(deleteItem);
+                return new ItemDTO(deleteItem);
+            }
+            return null;
+        }
     }
 }

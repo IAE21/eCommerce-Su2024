@@ -81,19 +81,11 @@ namespace IMM.Services
         }
 
         //Delete
-        public void Delete(int id)
+        public async Task<ItemDTO?> Delete(int id)
         {
-            if (items == null)
-            {
-                return;
-            }
-
-            var deleteItem = items.FirstOrDefault(c => c.Id == id);
-
-            if (deleteItem != null)
-            {
-                items.Remove(deleteItem);
-            }
+            var result = await new WebRequestHandler().Delete($"/{id}");
+            var deleteItem = JsonConvert.DeserializeObject<ItemDTO>(result);
+            return deleteItem;
         }
 
     }

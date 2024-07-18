@@ -27,5 +27,11 @@ namespace IMM.API.Controllers
         {
             return await new InventoryEC().AddOrUpdate(i);
         }
+
+        [HttpDelete("/{id}")]
+        public async Task<ItemDTO?> Delete(int id)
+        {
+            return await new InventoryEC().Delete(id);
+        }
     }
 }

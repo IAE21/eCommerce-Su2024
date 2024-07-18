@@ -108,13 +108,14 @@ namespace IMM.MAUI.ViewModels
             Shell.Current.GoToAsync($"//Item?itemId={i.Item.Id}");
         }
 
-        private void ExecuteDelete(int? id)
+        private async void ExecuteDelete(int? id)
         {
             if (id == null)
             {
                 return;
             }
-            InventoryServiceProxy.Current.Delete(id ?? 0);
+            await InventoryServiceProxy.Current.Delete(id ?? 0);
+            await InventoryServiceProxy.Current.Get();
         }
 
         private void ExecuteAddToCart(int? cartId, ItemViewModel? i)

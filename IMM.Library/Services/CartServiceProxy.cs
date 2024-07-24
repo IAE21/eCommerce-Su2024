@@ -81,7 +81,7 @@ namespace IMM.Services
         }
 
         //Add & Update in the Cart
-        public void AddToCart(int? cartId, ItemDTO item)
+        public async void AddToCart(int? cartId, ItemDTO item)
         {
             if (carts.Count == 0)
             {
@@ -117,6 +117,7 @@ namespace IMM.Services
             {
                 existCart.Contents.Add(item);
             }
+            await InventoryServiceProxy.Current.AddOrUpdate(inventoryItem);
         }
 
         //Add & Update List of Carts
@@ -143,7 +144,7 @@ namespace IMM.Services
         }
 
         //Delete
-        public void DeleteItem(int? cartId, int itemId)
+        public async void DeleteItem(int? cartId, int itemId)
         {
             if (carts.Count == 0)
             {
@@ -170,9 +171,10 @@ namespace IMM.Services
                 inventoryItem.Stock += deleteItem.Stock;
                 existCart.Contents.Remove(deleteItem);
             }
+            await InventoryServiceProxy.Current.AddOrUpdate(inventoryItem);
         }
 
-        public void DeleteCart(int id)
+        public void DeleteCart(int id, bool checkout)
         {
             if (!carts.Any())
             {
@@ -186,6 +188,13 @@ namespace IMM.Services
                 return;
             }
 
+            if (!checkout)
+            {
+                while (deleteCart.Contents.Any())
+                {
+                    DeleteItem(id, deleteCart.Contents.FirstOrDefault().Id);
+                }
+            }
             carts.Remove(deleteCart);
         }
     }

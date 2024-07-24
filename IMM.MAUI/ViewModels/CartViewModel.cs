@@ -148,7 +148,7 @@ namespace IMM.MAUI.ViewModels
             {
                 return;
             }
-            CartServiceProxy.Current.DeleteCart(id ?? 0);
+            CartServiceProxy.Current.DeleteCart(id ?? 0, false);
         }
 
         public void AddOrUpdate()

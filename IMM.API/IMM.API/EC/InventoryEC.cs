@@ -14,44 +14,19 @@ namespace IMM.API.EC
 
         public async Task<IEnumerable<ItemDTO>> Get()
         {
-            return FakeDatabase.Items.Take(100).Select(i => new ItemDTO(i));
+            return Filebase.Current.Items.Take(100).Select(i => new ItemDTO(i));
         }
 
         public async Task<ItemDTO> AddOrUpdate(ItemDTO i)
         {
-            bool add = false;
-            if (i.Id == 0)
-            {
-                i.Id = FakeDatabase.NextItemId;
-                add = true;
-            }
-
-            if (add)
-            {
-                FakeDatabase.Items.Add(new Item(i));
-            }
-            else
-            {
-                var updateItem = FakeDatabase.Items.FirstOrDefault(item => item.Id == i.Id);
-                if (updateItem != null)
-                {
-                    var index = FakeDatabase.Items.IndexOf(updateItem);
-                    FakeDatabase.Items.RemoveAt(index);
-                    updateItem = new Item(i);
-                    FakeDatabase.Items.Insert(index, updateItem);
-                }
-            }
-
-            return i;
+            return new ItemDTO(Filebase.Current.AddOrUpdate(new Item(i)));
         }
 
         public async Task<ItemDTO?> Delete(int id)
         {
-            var deleteItem = FakeDatabase.Items.FirstOrDefault(c => c.Id == id);
-
+            var deleteItem = Filebase.Current.Delete(id);
             if (deleteItem != null)
             {
-                FakeDatabase.Items.Remove(deleteItem);
                 return new ItemDTO(deleteItem);
             }
             return null;

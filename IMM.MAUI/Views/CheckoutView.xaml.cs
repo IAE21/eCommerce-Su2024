@@ -37,7 +37,7 @@ public partial class CheckoutView : ContentPage
         }
         else
         {
-            CartServiceProxy.Current.DeleteCart(CartId);
+            CartServiceProxy.Current.DeleteCart(CartId, true);
         }
     }
 }

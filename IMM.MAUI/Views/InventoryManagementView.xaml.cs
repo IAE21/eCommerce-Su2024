@@ -34,4 +34,9 @@ public partial class InventoryManagementView : ContentPage
     {
         Shell.Current.GoToAsync("//Tax");
     }
+
+    private void Import_Clicked(object sender, EventArgs e)
+    {
+        (BindingContext as InventoryViewModel)?.Import();
+    }
 }

@@ -52,7 +52,7 @@ namespace IMM.Services
 
         public async Task<IEnumerable<ItemDTO>> Get()
         {
-            var result = await new WebRequestHandler().Get("/Inventory");
+            var result = await new WebRequestHandler().Get("/Inventory") ?? "";
             var refreshedList = JsonConvert.DeserializeObject<List<ItemDTO>>(result);
             items = refreshedList?.ToList() ?? new List<ItemDTO>();
             return items;
@@ -83,9 +83,13 @@ namespace IMM.Services
         //Delete
         public async Task<ItemDTO?> Delete(int id)
         {
-            var result = await new WebRequestHandler().Delete($"/{id}");
-            var deleteItem = JsonConvert.DeserializeObject<ItemDTO>(result);
-            return deleteItem;
+            var result = await new WebRequestHandler().Delete($"/{id}") ?? " ";
+            if (result != "ERROR")
+            {
+                var deleteItem = JsonConvert.DeserializeObject<ItemDTO>(result);
+                return deleteItem;
+            }
+            return null;
         }
 
     }
